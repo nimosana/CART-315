@@ -17,4 +17,6 @@ I then focused on creating the bots and have the random dance mechanic, which I 
 
 I rapidly made a map background and added the camera to make the game more aesthetically pleasing, once I was done with the core functionalities, I implemented the second player, which made the game mostly complete. At this point, I felt I had invested more time than I should’ve, but I also wanted to complete the project and knew most of the job was done, so I did a final sprint to implement the game’s beginning and end states. I also added some instructions after I had a classmate try the game, and rapidly realized there were otherwise no instructions on how to play.
 
-The playtest showed me that the instructions about holding the keys and how to play may still be unclear
+The playtest showed me that the instructions about holding the keys and how to play may still be unclear. For the inputs, I also wish I would've had time to make P1's inputs WASD instead of ESDF.
+
+Link to the game: [Dance Battle!](https://nimosana.itch.io/dance-battle)
