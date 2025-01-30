@@ -21,5 +21,5 @@ The playtest showed me that the instructions about holding the keys and how to p
 
 Link to the game: [Dance Battle!](https://nimosana.itch.io/dance-battle)
 
-## Week 2
+## Week 2 (1/30/2025)
 This week, my exploration initially consisted of making the “dropper” continuously spawn falling circles which get deleted if the user does not catch them, or if they go out of bounds however this is unlikely to remain, as I rapidly changed paths. Towards the end, I focused on trying different ways of programming movement for last week’s square, I really wanted to cut the tie between framerate and movement speed. For this, I explored the Time.deltaTime value to create more predictable results independently of the machine, however I the confusing issue that Unity would override the acceleration values I set in the C# code. I tried implementing the rigidbody2D Forces to do movement but reverted back to accel * deltaTime. I spent a lot of time thinking about game ideas and I believe I want to make a bird’s eye view shooter. For this reason, I started working on how to make controls which take into account combinations of keypresses and rotate differently depending on the combination, but ran out of time researching how to find the most optimal way to do this (without making a 10+) if/else chain. 
