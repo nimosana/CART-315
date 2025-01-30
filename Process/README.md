@@ -17,4 +17,9 @@ I then focused on creating the bots and have the random dance mechanic, which I 
 
 I rapidly made a map background and added the camera to make the game more aesthetically pleasing, once I was done with the core functionalities, I implemented the second player, which made the game mostly complete. At this point, I felt I had invested more time than I should’ve, but I also wanted to complete the project and knew most of the job was done, so I did a final sprint to implement the game’s beginning and end states. I also added some instructions after I had a classmate try the game, and rapidly realized there were otherwise no instructions on how to play.
 
-The playtest showed me that the instructions about holding the keys and how to play may still be unclear
+The playtest showed me that the instructions about holding the keys and how to play may still be unclear. For the inputs, I also wish I would've had time to make P1's inputs WASD instead of ESDF.
+
+Link to the game: [Dance Battle!](https://nimosana.itch.io/dance-battle)
+
+## Week 2 (1/30/2025)
+This week, my exploration initially consisted of making the “dropper” continuously spawn falling circles which get deleted if the user does not catch them, or if they go out of bounds however this is unlikely to remain, as I rapidly changed paths. Towards the end, I focused on trying different ways of programming movement for last week’s square, I really wanted to cut the tie between framerate and movement speed. For this, I explored the Time.deltaTime value to create more predictable results independently of the machine, however I the confusing issue that Unity would override the acceleration values I set in the C# code. I tried implementing the rigidbody2D Forces to do movement but reverted back to accel * deltaTime. I spent a lot of time thinking about game ideas and I believe I want to make a bird’s eye view shooter. For this reason, I started working on how to make controls which take into account combinations of keypresses and rotate differently depending on the combination, but ran out of time researching how to find the most optimal way to do this (without making a 10+) if/else chain. 
