@@ -10,17 +10,17 @@ public class BallScript : MonoBehaviour {
     public int leftPlayerScore, rightPlayerScore;
     public Text scoreLeft, scoreRight; // Assign in the Inspector
     public float decreaseFactor = 1.5f; // Controls how quickly the shake stops
-    private readonly int[] directions = { -1, 1 };
+    private readonly int[] directions = { -4, 4 };
+    private bool ballReset;
     private int hDir, vDir;
-    private Vector3 lastVelocity; // Stores the velocity of the previous frame
+    private int nextServe;
 
     private Rigidbody2D rb;
     private float shakeDuration, intensity;
 
     private void Reset() {
+        transform.localPosition = new Vector2(0, 0);
         rb.linearVelocity = Vector2.zero;
-        transform.localPosition = new Vector3(0, 0, 0);
-        lastVelocity = rb.linearVelocity;
         scoreLeft.text = "Score\n" + leftPlayerScore;
         scoreRight.text = "Score\n" + rightPlayerScore;
         StartCoroutine(Launch());
@@ -36,6 +36,13 @@ public class BallScript : MonoBehaviour {
     // Update is called once per frame
     private void Update() {
         {
+            if (Mathf.Abs(rb.position.y) > 8 && !ballReset) {
+                ballReset = true;
+                nextServe = 0;
+                Debug.Log("Reset");
+                Reset();
+            }
+
             var originalPosition = transform.localPosition;
             if (shakeDuration > 0) {
                 // Apply random shake displacement
@@ -52,17 +59,18 @@ public class BallScript : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D wall) {
-        Debug.Log("collided");
         shakeDuration = 0.25f;
         if (wall.gameObject.name == "leftWall") {
             rightPlayerScore += 1;
             blip.pitch = 0.15f;
+            nextServe = -4;
             blip.Play();
             Reset();
         }
         else if (wall.gameObject.name == "rightWall") {
             leftPlayerScore += 1;
             blip.pitch = 0.15f;
+            nextServe = 4;
             blip.Play();
             Reset();
         }
@@ -78,13 +86,19 @@ public class BallScript : MonoBehaviour {
     }
 
     private IEnumerator Launch() {
+        transform.localPosition = new Vector2(0, 0);
         // choose Random X dir
-        hDir = directions[Random.Range(0, directions.Length)];
+        if (nextServe == 0)
+            hDir = directions[Random.Range(0, directions.Length)];
+        else
+            hDir = nextServe;
         // choose random Y dir
-        vDir = Random.Range(-2, 2);
+        vDir = Random.Range(-4, 4);
         // wait for x secs
         yield return new WaitForSeconds(1);
-        rb.AddForce(transform.right * ballSpeed * hDir);
-        rb.AddForce(transform.up * ballSpeed * vDir);
+        ballReset = false;
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(transform.right * (ballSpeed * hDir));
+        rb.AddForce(transform.up * (ballSpeed * vDir));
     }
 }
