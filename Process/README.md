@@ -32,3 +32,6 @@ To successfully achieve my vision, I replaced the manual position and rotation u
 To make the game more polished, I rapidly created a screen shake effect whenever the ball collides, photoshopped a pivot point to the paddles to highlight the relevancy of rotations, and added a red/blue theme for each player. To make the game more predictable, I added linear and rotational speed dampening, and small rotational forces if the paddle isn’t vertical, immobilizing and/or straightening the paddle whenever the player isn’t touching the relevant keys. I also changed the code so the ball goes to the loser, and resets itself if it manages to go out of bounds.
 
 ![pawng](https://github.com/user-attachments/assets/88b547ce-61df-4a66-af15-bbb28e9586d2)
+
+![pawng2](https://github.com/user-attachments/assets/003a4885-e664-4e9c-9765-490121abb9d2)
+
