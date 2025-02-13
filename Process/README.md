@@ -1,6 +1,6 @@
 # Process Journal
 
-## (1/23/2025)<br> Tiny project: ***Dance Battle!*** 
+## Week 1 (1/23/2025)<br> Tiny project: ***Dance Battle!*** 
 Before I began my project, I looked at the suggested engines and immediately discarded Twine and Ink, as I did not want my game to be text-focused. After checking out Bitsy and Pico-8, I opted for Pico-8 mainly because it allowed me to write my own code. I felt like Bitsy’s abstractions seemed limiting, and I was not interested in its tile map mechanic and movement.
 
 Before starting the process of creating my game, I decided to watch Pico-8 YouTube tutorials to understand how the game engine works. While watching, I understood the engine’s programming language, learnt about the engine’s Sprite, Map and Sound features, but also about apparent limitations I would need to consider, I also found a “cheat sheet” grouping and explaining most functions I could need.
@@ -37,7 +37,7 @@ To make the game more polished, I rapidly created a screen shake effect whenever
 
 ![pawng2](https://github.com/user-attachments/assets/003a4885-e664-4e9c-9765-490121abb9d2)
 
-##Week 4 (2/12/2025)
+## Week 4 (2/12/2025)
 
 This week, I wanted to continue exploring the idea of integrating physics similarly to last week’s pong game. To achieve this, I began by freezing the paddle’s Y-axis movement and affecting it through forces instead of modifying xPos. I added rotational forces (locked to 45deg) tilting the paddle as the user moves to complexify gameplay. I also changed the Paddle’s code to be ran in FixedUpdate for more consistent calculations.
 
