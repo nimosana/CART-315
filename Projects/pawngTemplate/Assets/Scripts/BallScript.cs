@@ -43,7 +43,6 @@ public class BallScript : MonoBehaviour {
                 Reset();
             }
 
-            var originalPosition = transform.localPosition;
             if (shakeDuration > 0) {
                 // Apply random shake displacement
                 cam.transform.localPosition = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), -10);

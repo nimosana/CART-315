@@ -2,10 +2,9 @@
 
 public class PaddleScript : MonoBehaviour {
     public KeyCode upKey, downKey, leftKey, rightKey;
-    public float bottomWall, topWall;
-    private readonly float paddleAccel = 900;
-    private readonly float paddleAccelRot = 400;
-    private readonly float paddleDamping = 1000;
+    private readonly float paddleAccel = 1800;
+    private readonly float paddleAccelRot = 800;
+    private readonly float paddleDamping = 2000;
 
     private Rigidbody2D rb;
     private float rotation, rotationAccel;
@@ -38,11 +37,5 @@ public class PaddleScript : MonoBehaviour {
         else if (Input.GetKey(upKey) && !Input.GetKey(downKey))
             rb.AddForce(transform.up * (paddleAccel * Time.deltaTime));
         else rb.linearDamping = paddleDamping * Time.deltaTime;
-
-        // rotation += rotationAccel;
-        // if (Mathf.Abs(rotation) > 4.5f) rotation = 4.5f * Mathf.Sign(rotation);
-        // rotationAccel *= -0.5f;
-        // transform.localPosition = new Vector3(transform.position.x, yPos, 0);
-        // transform.eulerAngles = new Vector3(0, 0, rotation * 10);
     }
 }
