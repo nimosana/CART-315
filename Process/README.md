@@ -45,7 +45,7 @@ I observed that the addition of forces increased the difficulty, and allowed for
 
 To further develop the flow of the game, clearing the bricks now refills them and increases the level, which progressively make the ball bouncier. To make the game “survival” based, the limited lives remain, with the objective of having the player fighting to keep the ball in control as the game becomes harder. To incentivize players to keep the ball going at a decent speed and discourage excessive speed dampening, players get more points in function of the ball’s speed magnitude when hitting the bricks.
 
-To make the game seem more polished, I reused my paddle sprite to highlight the rotation mechanic, used the same color palette as my pong game, added a text to display the level, and made both labels (points and levels) different colors. I also made the points variable static, so that I could call it in the Game Over scene and have it displayed when the player loses.
+To make the game seem more polished, I reused my paddle sprite to highlight the rotation mechanic, used the same color palette as my pong game, added a text to display the level, and made both labels (points and levels) different colors. I added the screen shake effect on collisions and also made the points variable static, so that I could call it in the Game Over scene and have it displayed when the player loses.
 
 ![breakout1](https://github.com/user-attachments/assets/822783c9-e39c-49f5-a55f-15cad8f6d2c7)
 
