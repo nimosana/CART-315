@@ -22,7 +22,9 @@ The playtest showed me that the instructions about holding the keys and how to p
 Link to the game: [Dance Battle!](https://nimosana.itch.io/dance-battle)
 
 ## Week 2 (1/30/2025)
-This week, my exploration initially consisted of making the “dropper” continuously spawn falling circles which get deleted if the user does not catch them, or if they go out of bounds however this is unlikely to remain, as I rapidly changed paths. Towards the end, I focused on trying different ways of programming movement for last week’s square, I really wanted to cut the tie between framerate and movement speed. For this, I explored the Time.deltaTime value to create more predictable results independently of the machine, however I the confusing issue that Unity would override the acceleration values I set in the C# code. I tried implementing the rigidbody2D Forces to do movement but reverted back to accel * deltaTime. I spent a lot of time thinking about game ideas and I believe I want to make a bird’s eye view shooter. For this reason, I started working on how to make controls which take into account combinations of keypresses and rotate differently depending on the combination, but ran out of time researching how to find the most optimal way to do this (without making a 10+) if/else chain.
+This week, my exploration initially consisted of making the “dropper” continuously spawn falling circles which get deleted if the user does not catch them, or if they go out of bounds however this is unlikely to remain, as I rapidly changed paths. Towards the end, I focused on trying different ways of programming movement for last week’s square, I really wanted to cut the tie between framerate and movement speed. For this, I explored the Time.deltaTime value to create more predictable results independently of the machine, however I the confusing issue that Unity would override the acceleration values I set in the C# code.
+
+I tried implementing the rigidbody2D Forces to do movement but reverted back to accel * deltaTime. I spent a lot of time thinking about game ideas and I believe I want to make a bird’s eye view shooter. For this reason, I started working on how to make controls which take into account combinations of keypresses and rotate differently depending on the combination, but ran out of time researching how to find the most optimal way to do this (without making a 10+) if/else chain.
 
 ## Week 3 (2/6/2025)
 For my personal take on Pawng, I wanted to experiment with velocity and forces, I wanted the users to feel a sense of physics realism, such as the ball and paddles having weight. To achieve this, I began my experimentation by the paddles, creating speed variables and modifying the x positions based on the speed. I also wanted the paddles to have rotation, so I also implemented rotation speed. The result gave an illusion of physics-based speed, however I quickly realized that the forces would not transfer to the ball and was unsatisfied.
@@ -34,4 +36,19 @@ To make the game more polished, I rapidly created a screen shake effect whenever
 ![pawng](https://github.com/user-attachments/assets/88b547ce-61df-4a66-af15-bbb28e9586d2)
 
 ![pawng2](https://github.com/user-attachments/assets/003a4885-e664-4e9c-9765-490121abb9d2)
+
+##Week 4 (2/12/2025)
+
+This week, I wanted to continue exploring the idea of integrating physics similarly to last week’s pong game. To achieve this, I began by freezing the paddle’s Y-axis movement and affecting it through forces instead of modifying xPos. I added rotational forces (locked to 45deg) tilting the paddle as the user moves to complexify gameplay. I also changed the Paddle’s code to be ran in FixedUpdate for more consistent calculations.
+
+I observed that the addition of forces increased the difficulty, and allowed for a learning/mastery curve. Players can easily give the ball too much speed, to their disadvantage, while also being able to exploit the rotational nature of the paddle to dampen the speed of the ball and survive in the long game.
+
+To further develop the flow of the game, clearing the bricks now refills them and increases the level, which progressively make the ball bouncier. To make the game “survival” based, the limited lives remain, with the objective of having the player fighting to keep the ball in control as the game becomes harder. To incentivize players to keep the ball going at a decent speed and discourage excessive speed dampening, players get more points in function of the ball’s speed magnitude when hitting the bricks.
+
+To make the game seem more polished, I reused my paddle sprite to highlight the rotation mechanic, used the same color palette as my pong game, added a text to display the level, and made both labels (points and levels) different colors. I also made the points variable static, so that I could call it in the Game Over scene and have it displayed when the player loses.
+
+![breakout1](https://github.com/user-attachments/assets/822783c9-e39c-49f5-a55f-15cad8f6d2c7)
+
+![breakouttt-ezgif com-optimize](https://github.com/user-attachments/assets/1a5f7aba-ec0e-4318-9a5a-a21ea1171030)
+
 
