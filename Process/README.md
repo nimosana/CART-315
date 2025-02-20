@@ -60,4 +60,7 @@ As levels are continuously longer and because the player lives mechanic was unfo
 
 To reintegrate the blips while avoiding redundant code, it is now managed by a GameManagement function which receives a tone as a parameter, the tone of the blip is different according to what the ball is hitting. Finally, to add a new element to the learning/mastery curve, pressing the spacebar now cancels rotation, allowing the user to prepare or keep its paddle at desired angles, giving them a new action to use or consider.
 
+![breakoutpt3](https://github.com/user-attachments/assets/e0664811-cc8d-4a4d-b227-9352e07a407b)
+
+
 
