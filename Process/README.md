@@ -51,4 +51,13 @@ To make the game seem more polished, I reused my paddle sprite to highlight the 
 
 ![breakouttt-ezgif com-optimize](https://github.com/user-attachments/assets/1a5f7aba-ec0e-4318-9a5a-a21ea1171030)
 
+## Week 5 (2/20/23025)
+
+This week, as I initially didn’t have much inspiration for what to add to my breakout game this week, I began my exploration in a technical manner by looking for ways to reorganize and optimize the existing code, moving general code and functions into my GameManagement script, such as the camera shake, level update, etc.
+While reworking the Brick Layer code, I got inspired to add hitpoints to the bricks in function of the level, making the mechanic of levels feel more noticeable/meaningful. To make this hitpoint mechanic more obvious and satisfying, I explored how to reduce the opacity of each brick corresponding to its life percentage, this was done changing its RGB color to an HSV value, modifying its S & V values and converting it back to RGB to be passed to the Renderer. 
+
+As levels are continuously longer and because the player lives mechanic was unforgiving, passing a level now restores an extra life to the player (if they have less than 3), Lives are now displayed at the bottom left of the screen to showcase this.
+
+To reintegrate the blips while avoiding redundant code, it is now managed by a GameManagement function which receives a tone as a parameter, the tone of the blip is different according to what the ball is hitting. Finally, to add a new element to the learning/mastery curve, pressing the spacebar now cancels rotation, allowing the user to prepare or keep its paddle at desired angles, giving them a new action to use or consider.
+
 
