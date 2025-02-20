@@ -9,6 +9,6 @@ PhysicsMaterial2D:
   m_Name: BallMat
   serializedVersion: 2
   friction: 0
-  bounciness: 1.0999999
+  bounciness: 1.05
   m_FrictionCombine: 1
   m_BounceCombine: 0
