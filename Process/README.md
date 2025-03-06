@@ -62,5 +62,6 @@ To reintegrate the blips while avoiding redundant code, it is now managed by a G
 
 ![breakoutpt3](https://github.com/user-attachments/assets/e0664811-cc8d-4a4d-b227-9352e07a407b)
 
+My exploration during these past weeks was mostly introspective, thinking about which type of game I want to create, combined with alot of research on game design. I started reading "Elements of Game design" by Robert Zubek, and watched videos from Game Maker's toolkit. I've also been searching for teammates, which is why I haven't defined my game idea yet, although I personally steer towards a survival type game.
 
 
