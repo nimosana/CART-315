@@ -67,7 +67,7 @@ To reintegrate the blips while avoiding redundant code, it is now managed by a G
 My exploration during these past weeks was mostly introspective, thinking about which type of game I want to create, combined with alot of research on game design. I started reading "Elements of Game design" by Robert Zubek, and watched videos from Game Maker's toolkit. I've also been searching for teammates, which is why I haven't defined my game idea yet, although I personally steer towards a survival type game.
 
 
-# Week 7 (3/13/2025)
+## Week 7 (3/13/2025)
 
 This week, after long days of blockage finding the idea of the game I wanted to make, I started making simple character movement with wall collisions. The player is a 3d object that rotates towards the user's mouse position, and it currently moves through keypresses.
 
