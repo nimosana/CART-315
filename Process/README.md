@@ -67,3 +67,11 @@ To reintegrate the blips while avoiding redundant code, it is now managed by a G
 My exploration during these past weeks was mostly introspective, thinking about which type of game I want to create, combined with alot of research on game design. I started reading "Elements of Game design" by Robert Zubek, and watched videos from Game Maker's toolkit. I've also been searching for teammates, which is why I haven't defined my game idea yet, although I personally steer towards a survival type game.
 
 
+# Week 7 (3/13/2025)
+
+This week, after long days of blockage finding the idea of the game I wanted to make, I started making simple character movement with wall collisions. The player is a 3d object that rotates towards the user's mouse position, and it currently moves through keypresses.
+
+I wanted to make something multiplayer, so I followed a tutorial for multiplayer functionality. I ended up with 2 projects, my movement prototype, and the multiplayer one, which was a mistake. The multiplayer example allows to move around and shoot projectiles, but it runs in v2021, when I try to update it to the lastest version, I have a problem: Lobby and Relay are deprecated and must be replaced for a newer version. I’ve ran out of time debugging so I will have to figure out what to do next.
+
+![image](https://github.com/user-attachments/assets/ebc41a27-0e4b-49dd-bd70-facf2682d4c1)
+![image](https://github.com/user-attachments/assets/26fcd5a2-396f-48df-a5c0-6504734586ec)
