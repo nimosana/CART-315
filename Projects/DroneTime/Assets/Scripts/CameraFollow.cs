@@ -28,4 +28,14 @@ public class CameraFollow : MonoBehaviour {
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
         transform.LookAt(target.position + Vector3.up);
     }
+
+    public void SetTarget(GameObject player) {
+        if (player != null) {
+            target = player.transform;
+            targetRb = player.GetComponent<Rigidbody>();
+        }
+        else {
+            Debug.LogError("Player is null.");
+        }
+    }
 }

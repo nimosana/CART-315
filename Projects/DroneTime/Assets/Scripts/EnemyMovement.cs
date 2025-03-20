@@ -129,4 +129,13 @@ public class EnemyDrone : MonoBehaviour {
             Destroy(projectile, 7f);
         }
     }
+
+    public void SetTarget(Transform playerTransform) {
+        if (playerTransform != null) {
+            player = playerTransform;
+        }
+        else {
+            Debug.LogError("Player transform is null.");
+        }
+    }
 }

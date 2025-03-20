@@ -5,9 +5,15 @@ using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
     public static GameManager singleton;
+    public int wave = 1;
+    public GameObject uiInstance;
+
     public GameObject EnemyDrone;
     public List<GameObject> enemies;
-    public int wave;
+
+    public GameObject playerInstance;
+    public GameObject playerPrefab;
+    public Vector3 spawnPosition = new Vector3(0, 0, 0);
     public float playerMaxHealth = 100f;
     public float playerMaxAmmo = 500f;
 
@@ -25,19 +31,29 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        spawnWaves(10);
+        playerInstance = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        DroneMovement playerScript = playerInstance.GetComponent<DroneMovement>();
+
+        uiInstance = Instantiate(uiInstance, Vector3.zero, Quaternion.identity);
+        CameraFollow cameraScript = cam.GetComponent<CameraFollow>();
+
+        playerScript.setUI(uiInstance);
+        cameraScript.SetTarget(playerInstance);
+        spawnWaves();
     }
 
     private void Update() {
         singleton.ManageShake();
     }
 
-    public void spawnWaves(int wave) {
+    public void spawnWaves() {
         for (int i = 0; i < wave * 2; i++) {
             float xPos = Random.Range(-1300, -1500);
             float zPos = Random.Range(-2200, -2400);
             GameObject instance =
                 Instantiate(EnemyDrone, new Vector3(xPos, 76, zPos), Quaternion.identity, this.transform);
+            EnemyDrone enemyAI = instance.GetComponent<EnemyDrone>();
+            enemyAI.SetTarget(playerInstance.transform);
             enemies.Add(instance);
         }
     }

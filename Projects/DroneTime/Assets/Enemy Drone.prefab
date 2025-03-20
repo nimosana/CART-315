@@ -234,20 +234,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b6be20055d36946bd96e945285464c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: 5
-  liftForce: 5
-  rotationSpeed: 0.2
+  accelForce: 10
+  rotationAccel: 0.2
   maxSpeed: 10
-  drag: 1.5
   maxRotationSpeed: 2
+  drag: 1.5
   bulletSpawnDistance: 0.25
+  tiltAmount: 10
+  tiltSmoothing: 5
   projectilePrefab: {fileID: 178192, guid: a4571f10673d6734494ba25f01b70792, type: 3}
   bulletShellPrefab: {fileID: 194330, guid: 0a138e478044fd94eb3af2f93e075513, type: 3}
   projectileSpeed: 10
   fireRate: 1
-  tiltAmount: 10
-  tiltSmoothing: 5
-  player: {fileID: 0}
+  player: {fileID: 8286393564870624240, guid: f75a482ab6d7a6f47a0d5a25fa5cc64a, type: 3}
 --- !u!114 &4370693044047425136
 MonoBehaviour:
   m_ObjectHideFlags: 0

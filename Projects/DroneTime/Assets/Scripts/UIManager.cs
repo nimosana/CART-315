@@ -13,18 +13,16 @@ public class UIManager : MonoBehaviour {
     public Slider ammoSlider;
 
     void Update() {
-        if (countingDown) {
-            if (timeRemaining > 0) {
-                timeRemaining -= Time.deltaTime;
-            }
-            else {
-                GameManager.singleton.wave++;
-                GameManager.singleton.spawnWaves(GameManager.singleton.wave);
-                timeRemaining = 60;
-            }
-
-            UpdateWaveDisplay(timeRemaining);
+        if (timeRemaining > 0) {
+            timeRemaining -= Time.deltaTime;
         }
+        else {
+            GameManager.singleton.wave++;
+            GameManager.singleton.spawnWaves();
+            timeRemaining = 60;
+        }
+
+        UpdateWaveDisplay(timeRemaining);
     }
 
     public void updateHealth(GameObject player) {

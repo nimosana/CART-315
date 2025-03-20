@@ -134,4 +134,8 @@ public class DroneMovement : MonoBehaviour {
         Destroy(bulletShell, 3f);
         Destroy(projectile, 7f);
     }
+
+    public void setUI(GameObject uiObject) {
+        uiManager = uiObject.GetComponent<UIManager>();
+    }
 }
