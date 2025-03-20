@@ -75,3 +75,7 @@ I wanted to make something multiplayer, so I followed a tutorial for multiplayer
 
 ![image](https://github.com/user-attachments/assets/ebc41a27-0e4b-49dd-bd70-facf2682d4c1)
 ![image](https://github.com/user-attachments/assets/26fcd5a2-396f-48df-a5c0-6504734586ec)
+
+## Week 8 (3/20/2025)
+
+After finding the idea of the game I wanted to make, a survival game based around drone warfare where the user must defend its base and use his drones to defend against the enemy ones, I
