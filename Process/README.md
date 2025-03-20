@@ -79,3 +79,7 @@ I wanted to make something multiplayer, so I followed a tutorial for multiplayer
 ## Week 8 (3/20/2025)
 
 After finding the idea of the game I wanted to make, a survival game based around drone warfare where the user must defend its base and use his drones to defend against the enemy ones, I
+
+![dronetime1](https://github.com/user-attachments/assets/0da9a995-519d-4e3e-88f8-965b98a586f8)
+![Sequence01_1-ezgif com-optimize](https://github.com/user-attachments/assets/b7f98a56-c159-467b-ac7e-f399a760d3dd)
+
