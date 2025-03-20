@@ -11,7 +11,7 @@ public class GameManagement : MonoBehaviour {
     public GameObject ball;
     private Rigidbody2D ballBody;
     public static GameManagement singleton;
-    public static int level = 1;
+    public static int level = 3;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI scoring;
     public TextMeshProUGUI livesText;
