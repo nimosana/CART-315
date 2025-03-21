@@ -78,7 +78,9 @@ I wanted to make something multiplayer, so I followed a tutorial for multiplayer
 
 ## Week 8 (3/20/2025)
 
-After finding the idea of the game I wanted to make, a survival game based around drone warfare where the user must defend its base and use his drones to defend against the enemy ones, I
+After finding the idea of the game I wanted to make, a survival game based around drone warfare where the user must defend their base and use drones to defend against the enemy ones, I got a drone model, programmed its movement with forces to simulate hovering, its rotation following the mouse. The drone tilts depending on its acceleration and speed to give a more realistic visual, the player can click to shoot bullets, dropping shell casings. I also added an enemy variant of the drone which also moves and shoots but targeting the player, drones can friendly fire and fall into pieces when destroyed. I added an UI to display drone health, ammo, and information about waves such as level, and time/enemies remaining. The Game manager singleton instances the game objects and handles wave generation.
+
+The idea for this iteration was to focus on the core elements of my game idea, creating the base of the game so that I can work and adapt it to continue working towards the larger idea of the game
 
 ![dronetime1](https://github.com/user-attachments/assets/0da9a995-519d-4e3e-88f8-965b98a586f8)
 ![Sequence01_1-ezgif com-optimize](https://github.com/user-attachments/assets/b7f98a56-c159-467b-ac7e-f399a760d3dd)
