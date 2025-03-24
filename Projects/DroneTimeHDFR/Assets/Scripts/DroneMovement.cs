@@ -163,7 +163,6 @@ public class DroneMovement : MonoBehaviour {
         effectInstance.Play();
         GameManager.singleton.shakeDuration = 1f;
         GameManager.singleton.shakeIntensity = 0.25f;
-        StartCoroutine(resetCameraShake());
 
         // Apply damage to nearby enemies
         Collider[] colliders = Physics.OverlapSphere(rb.position, suicideRadius);
@@ -174,24 +173,18 @@ public class DroneMovement : MonoBehaviour {
                     Rigidbody enemyRb = nearbyObject.GetComponent<Rigidbody>();
 
                     float distance = Vector3.Distance(rb.position, enemyRb.position);
-                    float damageFactor = Mathf.Clamp01(1 - (distance / suicideRadius)); // Clamped between 0 and 1
+                    float damageFactor = Mathf.Clamp01(1 - (distance / suicideRadius));
 
                     enemyRb.AddExplosionForce(suicideForce, rb.position, suicideRadius);
                     StartCoroutine(DelayedDamage(enemyHealth, suicideDamage * damageFactor));
                     Debug.Log("DAMAGE: " + suicideDamage * damageFactor);
                 }
             }
+
             StartCoroutine(DelayedDeath());
         }
 
-
-        // Coroutine to apply damage after a short delay
-        IEnumerator resetCameraShake() {
-            yield return new WaitForSeconds(1f);
-            GameManager.singleton.shakeIntensity = 0.03f;
-        }
-
-        // Coroutine to apply damage after a short delay
+        // Coroutine so the drone bodies yeet away
         IEnumerator DelayedDamage(Health enemyHealth, float damage) {
             yield return new WaitForSeconds(0.01f);
             enemyHealth.TakeDamage(damage);
@@ -201,7 +194,5 @@ public class DroneMovement : MonoBehaviour {
             yield return new WaitForSeconds(0.02f);
             healthScript.TakeDamage(100);
         }
-        // Destroy the drone itself
-        // Destroy(gameObject);
     }
 }

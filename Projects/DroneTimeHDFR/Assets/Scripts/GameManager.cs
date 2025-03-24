@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Random = UnityEngine.Random;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour {
     private Minimap mapScript;
     public GameObject playerInstance;
     public GameObject playerPrefab;
+    private DroneMovement playerScript;
+    private Health playerHealthScript;
     public GameObject basePrefab;
 
     public Vector3 spawnPosition = new Vector3(0, 0, 0);
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour {
     public float decreaseFactor = 1.5f;
 
     public Camera cameraInstance;
+    private CameraFollow cameraScript;
     public Vector3 CameraSpawn;
     private bool shaking = false;
     private float thisShakeDuration;
@@ -41,14 +45,16 @@ public class GameManager : MonoBehaviour {
         playerInstance = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
         uiInstance = Instantiate(uiInstance, Vector3.zero, Quaternion.identity);
 
-        DroneMovement playerScript = playerInstance.GetComponent<DroneMovement>();
-        Health playerHealth = playerInstance.GetComponent<Health>();
+        playerScript = playerInstance.GetComponent<DroneMovement>();
+        playerHealthScript = playerInstance.GetComponent<Health>();
         mapScript = uiInstance.transform.Find("Canvas/MinimapBackground").gameObject.GetComponent<Minimap>();
-        CameraFollow cameraScript = cameraInstance.GetComponent<CameraFollow>();
+        cameraScript = cameraInstance.GetComponent<CameraFollow>();
+        uiInstance.GetComponentInChildren<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
         uiInstance.GetComponentInChildren<Canvas>().worldCamera = cameraInstance;
+        uiInstance.GetComponentInChildren<Canvas>().planeDistance = 1.5f;
         playerScript.mainCamera = cameraInstance;
         playerScript.setUI(uiInstance);
-        playerHealth.setUI(uiInstance);
+        playerHealthScript.setUI(uiInstance);
         cameraScript.SetTarget(playerInstance);
 
         spawnWaves();
@@ -89,6 +95,25 @@ public class GameManager : MonoBehaviour {
         else if (shaking) {
             shakeDuration = 0f;
             shaking = false;
+        }
+    }
+
+    public void respawnPlayer() {
+        StartCoroutine(respawnPlayer());
+
+        IEnumerator respawnPlayer() {
+            yield return new WaitForSeconds(3f);
+            playerInstance = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+            playerScript = playerInstance.GetComponent<DroneMovement>();
+            playerHealthScript = playerInstance.GetComponent<Health>();
+
+            playerScript.mainCamera = cameraInstance;
+            playerScript.setUI(uiInstance);
+            playerHealthScript.setUI(uiInstance);
+            cameraScript.SetTarget(playerInstance);
+            mapScript.player = playerInstance.GetComponent<Transform>();
+
+            singleton.shakeIntensity = 0.03f;
         }
     }
 }

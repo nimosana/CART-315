@@ -30,6 +30,9 @@ public class Health : MonoBehaviour {
     void Die() {
         DroneDestruction droneDestruction = GetComponent<DroneDestruction>();
         droneDestruction.ExplodeDrone();
+        if (gameObject.CompareTag("Player")) {
+            GameManager.singleton.respawnPlayer();
+        }
         Destroy(gameObject); // Destroy the object when health reaches zero
     }
 
