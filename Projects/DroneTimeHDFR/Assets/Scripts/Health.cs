@@ -33,7 +33,7 @@ public class Health : MonoBehaviour {
         if (gameObject.CompareTag("Player")) {
             GameManager.singleton.respawnPlayer();
         }
-        Destroy(gameObject); // Destroy the object when health reaches zero
+        Destroy(gameObject);
     }
 
     public void setUI(GameObject uiObject) {

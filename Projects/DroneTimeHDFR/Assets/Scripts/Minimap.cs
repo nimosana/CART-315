@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Minimap : MonoBehaviour {
-    public Transform player; // Player's Transform
-    public List<GameObject> enemyDrones; // List of enemy drones
-    public Transform homeBase; // Homebase Transform
+    public Transform player;
+    public List<GameObject> enemyDrones;
+    public Transform homeBase;
 
-    public RectTransform playerIcon; // UI Icon for the player
-    public RectTransform enemyIcon; // Template UI Icon for enemies
-    public RectTransform homeBaseIcon; // UI Icon for homebase
+    public RectTransform playerIcon;
+    public RectTransform enemyIcon;
+    public RectTransform homeBaseIcon;
 
-    private List<RectTransform> enemyIcons = new List<RectTransform>(); // List to store enemy icons
+    private List<RectTransform> enemyIcons = new List<RectTransform>();
 
-    public float mapScale = 1f; // Adjust to fit the map to the UI
+    public float mapScale = 1f;
 
     void Start() {
         // Instantiate icons for each enemy
@@ -22,7 +22,6 @@ public class Minimap : MonoBehaviour {
             RectTransform newIcon = Instantiate(enemyIcon, enemyIcon.transform.parent);
             enemyIcons.Add(newIcon);
         }
-
         // enemyIcon.gameObject.SetActive(false); // Disable the template icon
     }
 
@@ -52,7 +51,7 @@ public class Minimap : MonoBehaviour {
     }
 
     void UpdateIcon(Transform target, RectTransform icon) {
-        if (!player) return; 
+        if (!player) return;
         Vector3 offset = target.position - player.position;
         Vector2 minimapPos = new Vector2(offset.x * mapScale, offset.z * mapScale);
 

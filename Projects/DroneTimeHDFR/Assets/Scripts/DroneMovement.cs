@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
+using Random = UnityEngine.Random;
 
 public class DroneMovement : MonoBehaviour {
     public float accelForce = 10f; // Forward movement force
@@ -40,6 +42,12 @@ public class DroneMovement : MonoBehaviour {
         healthScript = GetComponent<Health>();
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(detonateKey)) {
+            suicideDrone();
+        }
+    }
+
     void FixedUpdate() {
         RotateTowardsMouse();
         MoveDrone();
@@ -57,9 +65,6 @@ public class DroneMovement : MonoBehaviour {
         }
 
         ApplyVisualTilt();
-        if (Input.GetKeyDown(detonateKey)) {
-            suicideDrone();
-        }
     }
 
     void MoveDrone() {

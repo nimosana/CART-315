@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6223ef945cc8be346badc62899051111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wave: 0
+  wave: 5
   uiInstance: {fileID: 48862527799264801, guid: 35064ca820061c54b810602b04776807, type: 3}
   EnemyDrone: {fileID: 1000011789979478, guid: 660b3da5d1cc2a346aba5068c0dad7f8, type: 3}
   enemies: []
