@@ -87,4 +87,14 @@ The idea for this iteration was to focus on the core elements of my game idea, c
 ![dronetime1](https://github.com/user-attachments/assets/0da9a995-519d-4e3e-88f8-965b98a586f8)
 ![Sequence01_1-ezgif com-optimize](https://github.com/user-attachments/assets/b7f98a56-c159-467b-ac7e-f399a760d3dd)
 
+## Week 9 (3/26/2025)
+
+This week, I began by transferring the game from Unity’s URP to HDRP for better visuals, this resulted in all assets, lighting and shadows looking much better, this was important to me as I wanted the player’s experience to be more immersive. I believe the transfer to HDRP paid off, as after adding trees and the player’s base, I am quite satisfied with how the game looks, it also pushed me to revise and optimize the code to ensure the game’s code is efficient and runs well. (the trees and textures are external assets found online)
+
+After finding an asset pack of explosion VFX (found online) and adding them to the drone destruction scripts, I had to reorganize most of the code structure so the gameManager singleton instantiates the player, UI and enemies. The change was needed for the wave mechanic, and the option for the player to Kamikaze, which implied destroying the original player gameobject and reassigning a new one for the scripts of the camera, enemy AI and UI. This was something I should’ve but hadn’t foreseen but it also allows for more flexibility in making the game more complex.
+
+Another unexpected problem that arose upon adding the player’s homebase was that it was really easy to lose track of its position, this pushed me to delay my original plans, opting to develop the now functioning minimap. This addition allows players to keep track of the target they’are defending, while simultaneously making it easier to find the enemy locations, I also did other small updates to the UI and added the base’s health bar, but it has yet to become functional.
+
+I set the UI to screen space – camera to add the shaky effect, which I feel adds to the idea that it is a remote controlled drone, but I ran out of time to implement the audio as I had planned to, for the next iteration I plan to reimplement the enemy’s targeting of the player, which is temporarily disabled as their main target is now the base.
+
 https://youtu.be/XdEEljr3b-0
