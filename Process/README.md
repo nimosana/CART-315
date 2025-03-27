@@ -98,4 +98,4 @@ Another unexpected problem that arose upon adding the player’s homebase was th
 but I ran out of time to implement the audio as I had planned to, for the next iteration I plan to reimplement the enemy’s targeting of the player, which is temporarily disabled as their main target is now the base.
 
 https://youtu.be/XdEEljr3b-0
-The game now has too much detail to make the 10 second gifs under 10MB :)
+The game now has too much detail to make the 10 second gifs under 10MB
