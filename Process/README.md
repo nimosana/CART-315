@@ -99,3 +99,16 @@ I ran out of time to implement the audio as I had planned to, for the next itera
 
 https://youtu.be/XdEEljr3b-0
 The game has too much detail to make gifs under 10MB
+
+## Week 10 (4/03/2025)
+
+I restructured the AI movement, enemies now target the base by default, switching to the player if he’s at a certain distance and closer to it than the base. All drones now aim to stay at a specific height (but can go higher or lower depending on explosions or other factors) and enemy drones now dive towards the base and kamikaze when they get close, however they can always go back up if the player gets close enough. 
+
+Upon normal death (not self-detonation) drones have 50% chance of detonating themselves, enemy drone explosions make the screen shake, but to do so the algorithm for the shaking had to be remade. Shakes are now similar to instances and are additive, shooting and explosions will stack up and increase the shaking if simultaneous. The base has its health implemented and it gets damage from the enemy explosions based on distance (so enemy drones exploded by other ones can still damage it a bit if they themselves explode close enough) but nothing happens when the base dies.
+
+The player’s drone now has green accents, while the enemy drones have red accents, The camera has also been tweaked to make controls and view better, but this is still work in progress.
+
+I fixed some bugs, such as the UI not (health & ammo) not updating instantly upon player respawn, I also fixed a bug where the enemy drones targeted a corner of the base instead of its center, the base position for the minimap was also skewed. I also tried to further optimize the code to reduce calculations and maximize performance.
+
+Before the final prototype, the next steps would be to include the long awaited audio, and maybe to add a start and end screen.
+
