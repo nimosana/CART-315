@@ -95,7 +95,7 @@ After finding an asset pack of explosion VFX (found online) and adding them to t
 
 Another unexpected problem that arose upon adding the player’s homebase was that it was really easy to lose track of its position, this pushed me to delay my original plans, opting to develop the now functioning minimap. This addition allows players to keep track of the target they’re defending, while simultaneously making it easier to find the enemy locations, I also made other small updates to the UI and added the base’s health bar, but it has yet to become functional. the UI is now set to screen space – camera to add the shaky effect, which I feel adds to the idea that it is a remote controlled drone,
 
-but I ran out of time to implement the audio as I had planned to, for the next iteration I plan to reimplement the enemy’s targeting of the player, which is temporarily disabled as their main target is now the base.
+I ran out of time to implement the audio as I had planned to, for the next iteration I plan to reimplement the enemy’s targeting of the player, which is temporarily disabled as their main target is now the base.
 
 https://youtu.be/XdEEljr3b-0
-The game now has too much detail to make the 10 second gifs under 10MB :)
+The game has too much detail to make gifs under 10MB
