@@ -16,7 +16,7 @@ public class DroneMovement : MonoBehaviour {
     public bool invincible = false;
     public GameObject projectilePrefab;
     public GameObject bulletShellPrefab;
-    public float playerAmmo;
+    public float playerAmmo = 200;
     public float projectileSpeed = 50f;
     public float fireRate = 0.1f; // Time between shots
     private float nextFireTime;
@@ -28,7 +28,6 @@ public class DroneMovement : MonoBehaviour {
     public KeyCode detonateKey = KeyCode.Space;
 
     public UIManager uiManager;
-
     private Rigidbody rb;
     private Vector3 previousVelocity;
     public Camera mainCamera;
@@ -38,13 +37,13 @@ public class DroneMovement : MonoBehaviour {
         rb.useGravity = false;
         rb.linearDamping = drag;
         previousVelocity = Vector3.zero;
-        playerAmmo = GameManager.singleton.playerMaxAmmo;
         healthScript = GetComponent<Health>();
+        playerAmmo = GameManager.singleton.playerMaxAmmo;
     }
 
     private void Update() {
         if (Input.GetKeyDown(detonateKey)) {
-            suicideDrone();
+            SuicideDrone();
         }
     }
 
@@ -52,9 +51,8 @@ public class DroneMovement : MonoBehaviour {
         RotateTowardsMouse();
         MoveDrone();
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime && playerAmmo > 0) {
-            // Left-click to shoot
             playerAmmo--;
-            uiManager.updateAmmo(rb.gameObject);
+            uiManager.UpdateAmmo(playerAmmo);
             ShootProjectile();
             nextFireTime = Time.time + fireRate;
         }
@@ -103,24 +101,27 @@ public class DroneMovement : MonoBehaviour {
     }
 
     void ApplyVisualTilt() {
-        // Calculate local velocity and acceleration
+        // Calculate local velocity and acceleration in local space.
         Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
         Vector3 localAcceleration =
             transform.InverseTransformDirection((rb.linearVelocity - previousVelocity) / Time.fixedDeltaTime);
         previousVelocity = rb.linearVelocity;
 
-        // Determine tilt factors using clamped values
+        // Determine tilt factors based on speed and acceleration.
         float speedFactor = Mathf.Clamp01(localVelocity.magnitude / maxSpeed);
-        float finalTiltForward = Mathf.Clamp((localVelocity.z * speedFactor + localAcceleration.z) * tiltAmount,
-            -tiltAmount, tiltAmount);
-        float finalTiltSideways = Mathf.Clamp((-localVelocity.x * speedFactor - localAcceleration.x) * tiltAmount,
+        float tiltForward = Mathf.Clamp((localVelocity.z * speedFactor + localAcceleration.z) * tiltAmount, -tiltAmount,
+            tiltAmount);
+        float tiltSideways = Mathf.Clamp((-localVelocity.x * speedFactor - localAcceleration.x) * tiltAmount,
             -tiltAmount, tiltAmount);
 
-        // Maintain current yaw, applying tilt only to pitch and roll
-        Quaternion finalRotation = Quaternion.Euler(finalTiltForward, transform.eulerAngles.y, finalTiltSideways);
+        // Build the target rotation by preserving current yaw and adding tilt on pitch and roll.
+        float yaw = transform.eulerAngles.y;
+        Quaternion baseYaw = Quaternion.Euler(0, yaw, 0);
+        Quaternion tiltRotation = Quaternion.Euler(tiltForward, 0, tiltSideways);
+        Quaternion targetRotation = baseYaw * tiltRotation;
 
-        // Smooth interpolation for visual stability
-        transform.rotation = Quaternion.Slerp(transform.rotation, finalRotation, Time.deltaTime * tiltSmoothing);
+        // Smoothly interpolate from the current rotation to the target rotation.
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * tiltSmoothing);
     }
 
     void ShootProjectile() {
@@ -132,8 +133,7 @@ public class DroneMovement : MonoBehaviour {
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
         GameObject bulletShell = Instantiate(bulletShellPrefab, shellPosition,
             Quaternion.Euler(-90, transform.eulerAngles.y, 0));
-        GameManager.singleton.shakeDuration = 0.05f;
-
+        ShakeManager.Instance.AddShake(0.05f, 0.02f);
         // Configure projectile
         if (projectile.TryGetComponent(out Rigidbody projectileRb)) {
             projectileRb.position = new Vector3(projectileRb.position.x, 76f, projectileRb.position.z);
@@ -157,17 +157,17 @@ public class DroneMovement : MonoBehaviour {
         Destroy(projectile, 7f);
     }
 
-    public void setUI(GameObject uiObject) {
+    public void SetUI(GameObject uiObject) {
         uiManager = uiObject.GetComponent<UIManager>();
     }
 
-    void suicideDrone() {
+    public void SuicideDrone() {
         // Spawn the explosion effect
         VisualEffect effectInstance = Instantiate(explosionEffect, rb.position, Quaternion.identity);
         Destroy(effectInstance.gameObject, 5f);
         effectInstance.Play();
-        GameManager.singleton.shakeDuration = 1f;
-        GameManager.singleton.shakeIntensity = 0.25f;
+        ShakeManager.Instance.AddShake(1f, 0.25f);
+        healthScript.exploded = true;
 
         // Apply damage to nearby enemies
         Collider[] colliders = Physics.OverlapSphere(rb.position, suicideRadius);
@@ -176,7 +176,9 @@ public class DroneMovement : MonoBehaviour {
                 if (nearbyObject.CompareTag("EnemyDrone")) {
                     Health enemyHealth = nearbyObject.GetComponent<Health>();
                     Rigidbody enemyRb = nearbyObject.GetComponent<Rigidbody>();
-
+                    // Ensure both components exist before proceeding
+                    if (!enemyHealth || !enemyRb)
+                        continue;
                     float distance = Vector3.Distance(rb.position, enemyRb.position);
                     float damageFactor = Mathf.Clamp01(1 - (distance / suicideRadius));
 
@@ -192,12 +194,14 @@ public class DroneMovement : MonoBehaviour {
         // Coroutine so the drone bodies yeet away
         IEnumerator DelayedDamage(Health enemyHealth, float damage) {
             yield return new WaitForSeconds(0.01f);
-            enemyHealth.TakeDamage(damage);
+            if (enemyHealth) {
+                enemyHealth.TakeDamage(damage);
+            }
         }
 
         IEnumerator DelayedDeath() {
             yield return new WaitForSeconds(0.02f);
-            healthScript.TakeDamage(100);
+            healthScript.Die();
         }
     }
 }

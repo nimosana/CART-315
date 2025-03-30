@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DronePart
   - EnemyDrone
+  - Base
   layers:
   - Default
   - TransparentFX

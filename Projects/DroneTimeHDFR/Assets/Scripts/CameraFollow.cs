@@ -5,14 +5,13 @@ public class CameraFollow : MonoBehaviour {
     public Transform target;
     public Rigidbody targetRb;
 
-    public float maxSpeed = 10f;
-
     // Camera related
+    public float maxSpeed = 10f;
     public Vector3 minOffset = new Vector3(0, 5, -5);
     public Vector3 maxOffset = new Vector3(0, 10, -10);
     public float smoothSpeed = 5f;
 
-    private Vector3 velocity = Vector3.zero;
+    private Vector3 _velocity = Vector3.zero;
 
     void LateUpdate() {
         if (!target || !targetRb) return;
@@ -25,12 +24,12 @@ public class CameraFollow : MonoBehaviour {
         Vector3 desiredPosition = target.position + Quaternion.Euler(0, target.eulerAngles.y, 0) * dynamicOffset;
 
         // Smoothly move the camera and look at the target
-        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed);
+        transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, smoothSpeed);
         transform.LookAt(target.position + Vector3.up);
     }
 
     public void SetTarget(GameObject player) {
-        if (player != null) {
+        if (player) {
             target = player.transform;
             targetRb = player.GetComponent<Rigidbody>();
         }

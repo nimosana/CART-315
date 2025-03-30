@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5607116085387309216
+--- !u!114 &-8066576866496342068
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Drone Battery
+  m_Name: Enemy Chassis
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: ef8e18ef13380d94db3ee9db0b48391a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2cb937e488bd51e4ea00cb2e97d8773b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -65,7 +65,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 915b45d7547529549a4e2e159f92072f, type: 3}
+        m_Texture: {fileID: 2800000, guid: eaf77b2843ac0904ca0e8c9ed1e33ecd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CoatMaskMap:
@@ -109,19 +109,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ef8e18ef13380d94db3ee9db0b48391a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2cb937e488bd51e4ea00cb2e97d8773b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 2800000, guid: 9fcfb937f5c79a5488097590f5f3be82, type: 3}
+        m_Texture: {fileID: 2800000, guid: f335ea0ded378a14a8055955244586e3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: b0c9edc88ffd0c043993480b9dca3fb2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 642235337eb58404aa04bf850a03c81e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 915b45d7547529549a4e2e159f92072f, type: 3}
+        m_Texture: {fileID: 2800000, guid: eaf77b2843ac0904ca0e8c9ed1e33ecd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -304,8 +304,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.67058825, g: 0.67058825, b: 0.67058825, a: 1}
-    - _Color: {r: 0.67058825, g: 0.67058825, b: 0.67058825, a: 1}
+    - _BaseColor: {r: 0.754717, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.75471693, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

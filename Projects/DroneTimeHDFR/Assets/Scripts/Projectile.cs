@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour {
         Destroy(gameObject); // Destroy bullet on impact
         Health health = collision.gameObject.GetComponent<Health>();
 
-        if (health != null) {
+        if (health) {
             health.TakeBulletDamage(damage, collision.gameObject);
         }
     }

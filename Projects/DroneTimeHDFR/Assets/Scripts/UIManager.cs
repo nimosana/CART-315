@@ -9,35 +9,45 @@ public class UIManager : MonoBehaviour {
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI enemiesText;
     public Slider healthSlider;
+    public Slider baseSlider;
+
     public Slider ammoSlider;
+    public float baseHealth = 100f;
+    public Health health;
 
     void Update() {
         if (timeRemaining > 0) {
             timeRemaining -= Time.deltaTime;
         }
-        else {
+        else if (timeRemaining <= 0 && GameManager.singleton.playerAlive) {
             GameManager.singleton.wave++;
-            GameManager.singleton.spawnWaves();
+            GameManager.singleton.SpawnWaves();
             timeRemaining = 60;
         }
 
         UpdateWaveDisplay(timeRemaining);
     }
 
-    public void updateHealth(GameObject player) {
-        Health health = player.gameObject.GetComponent<Health>();
+    public void UpdatePlayerHealth(GameObject player) {
+        health = player.gameObject.GetComponent<Health>();
         healthSlider.value = (health.currentHealth / GameManager.singleton.playerMaxHealth);
-        // if (healthText != null) {
-        //     healthText.text = "Health: " + $"{healthSlider.value * 100}";
-        // }
     }
 
-    public void updateAmmo(GameObject player) {
-        DroneMovement droneStuff = player.GetComponent<DroneMovement>();
-        ammoSlider.value = (droneStuff.playerAmmo / GameManager.singleton.playerMaxAmmo);
-        if (ammoText != null) {
-            ammoText.text = "Ammo: " + $"{droneStuff.playerAmmo}";
+    public void UpdateBaseHealth() {
+        health = GameManager.singleton.baseInstance.GetComponent<Health>();
+        baseSlider.value = health.currentHealth / health.maxHealth;
+    }
+
+    public void UpdateAmmo(float playerAmmo) {
+        ammoSlider.value = (playerAmmo / GameManager.singleton.playerMaxAmmo);
+        if (ammoText) {
+            ammoText.text = "Ammo: " + $"{playerAmmo}";
         }
+    }
+
+    public void NewDroneUI(GameObject player) {
+        UpdateAmmo(GameManager.singleton.playerMaxAmmo);
+        UpdatePlayerHealth(player);
     }
 
     void UpdateWaveDisplay(float timeToDisplay) {
