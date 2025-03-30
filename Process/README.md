@@ -112,3 +112,6 @@ I fixed some bugs, such as the UI not (health & ammo) not updating instantly upo
 
 Before the final prototype, the next steps would be to include the long awaited audio, and maybe to add a start and end screen.
 
+This week's visual overview:
+https://youtu.be/hTY82NkYByo
+
