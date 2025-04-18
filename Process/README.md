@@ -117,4 +117,4 @@ https://youtu.be/hTY82NkYByo
 
 ## Week 11 (4/17/2025)
 
-For my final iteration,
+For my final iteration, I wasn't able to work as much after the in-person playtests, but I focused on adressing feedback from testers. I made the camera follow the drone with less sway, making the player's view more predictable, and enemy drones slightly more visible. The user can now adjust their altitude (between the tree horizon and a max height, and enemy drones will try to match the player's speed  
