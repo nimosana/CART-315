@@ -112,3 +112,13 @@ I fixed some bugs, such as the UI not (health & ammo) not updating instantly upo
 
 Before the final prototype, the next steps would be to include the long awaited audio, and maybe to add a start and end screen.
 
+This week's visual overview:
+https://youtu.be/hTY82NkYByo
+
+## Week 11 (4/17/2025)
+
+For my final iteration, I wasn't able to work as much after the in-person playtests, but I focused on trying to address recurring feedback from testers. I made the camera follow the drone with less sway, making the player's view more predictable, and enemy drones slightly more visible. The user can now adjust their altitude (between the tree horizon and a max height, and enemy drones will adapt to the player's height. 
+
+I tried to make the edges of the enemy drones glow through a shader graph but ran out of time debugging it, as I have no experience with Unity nodes, but if I continue this project, I would try adding these effects to address the visibility problem with enemies.
+
+In retrospect, I think this project was a good way for me to explore the graphical capabilities of the Unity Game engine, experimenting to achieve a high fidelity look. I also believe I was able to create a well-made core gameplay loop for my game, through the waves, home base, and drone combat mechanics. I feel like I created a strong canvas in which I can continue adding more elements or mechanics, the code is relatively well-organised and with it, I believe I've created something I can continue modifying in a scalable and adaptive manner.
