@@ -7,7 +7,7 @@ public class ShakeManager : MonoBehaviour {
     public static ShakeManager Instance;
     public Camera cameraInstance;
     private List<ShakeInstance> shakes = new List<ShakeInstance>();
-
+    public Vector3 totalOffset;
     public float decreaseFactor = 1f;
 
 
@@ -28,7 +28,7 @@ public class ShakeManager : MonoBehaviour {
         if (shakes.Count == 0 || !cameraInstance)
             return;
 
-        Vector3 totalOffset = Vector3.zero;
+        totalOffset = Vector3.zero;
 
         for (int i = shakes.Count - 1; i >= 0; i--) {
             ShakeInstance shake = shakes[i];

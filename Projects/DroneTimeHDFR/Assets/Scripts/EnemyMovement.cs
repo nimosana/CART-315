@@ -82,7 +82,9 @@ public class EnemyDrone : MonoBehaviour {
         Vector3 directionToPlayer = (GameManager.singleton.playerInstance.transform.position - transform.position)
             .WithY(0).normalized;
         // Apply movement force and limit max speed
-        Vector3 liftDirection = Vector3.up * (liftForce * Mathf.Sign(76 - rb.position.y));
+        Vector3 liftDirection = Vector3.up *
+                                (liftForce * Mathf.Sign(GameManager.singleton.playerInstance.transform.position.y -
+                                                        rb.position.y));
         rb.AddForce(directionToPlayer * (directionSign * accelForce) + liftDirection, ForceMode.Acceleration);
         rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
 

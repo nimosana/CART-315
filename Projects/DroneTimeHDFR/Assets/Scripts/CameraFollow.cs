@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour {
 
         // Smoothly move the camera and look at the target
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, smoothSpeed);
-        transform.LookAt(target.position + Vector3.up);
+        transform.LookAt(target.position + ShakeManager.Instance.totalOffset + Vector3.up * 1.5f);
     }
 
     public void SetTarget(GameObject player) {

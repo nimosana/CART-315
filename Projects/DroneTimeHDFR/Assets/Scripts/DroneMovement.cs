@@ -26,6 +26,7 @@ public class DroneMovement : MonoBehaviour {
     public float suicideRadius = 10f;
     public float suicideDamage = 200f;
     public KeyCode detonateKey = KeyCode.Space;
+    public KeyCode rotateKey = KeyCode.LeftShift;
 
     public UIManager uiManager;
     private Rigidbody rb;
@@ -36,6 +37,7 @@ public class DroneMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.linearDamping = drag;
+        rb.angularDamping = drag;
         previousVelocity = Vector3.zero;
         healthScript = GetComponent<Health>();
         playerAmmo = GameManager.singleton.playerMaxAmmo;
@@ -48,7 +50,10 @@ public class DroneMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        RotateTowardsMouse();
+        if (!Input.GetKey(rotateKey)) {
+            RotateTowardsMouse();
+        }
+
         MoveDrone();
         if (Input.GetMouseButton(0) && Time.time >= nextFireTime && playerAmmo > 0) {
             playerAmmo--;
@@ -67,14 +72,36 @@ public class DroneMovement : MonoBehaviour {
 
     void MoveDrone() {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-        Vector3 force = transform.TransformDirection(input * accelForce);
+        float currentY = rb.position.y;
 
+        // Vertical movement (Shift = up, Ctrl = down)
+        float verticalInput = 0f;
+
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && currentY > 75.9f) {
+            verticalInput = -1f; // move up
+        }
+        else if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && currentY < 100.1) {
+            verticalInput = 1f; // move down
+        }
+
+        if (currentY < 75.9f) {
+            verticalInput = -1f;
+        } else if (currentY > 100) {
+            verticalInput = 1f;
+        }
+
+        input.y = verticalInput;
+
+        Vector3 force = transform.TransformDirection(input * accelForce);
         rb.AddForce(-force, ForceMode.Acceleration);
+
         rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
 
-        // Keep the drone at a fixed Y-position
-        rb.position = rb.position.WithY(76f);
+        Vector3 clampedPosition = rb.position;
+
+        rb.position = clampedPosition;
     }
+
 
     void RotateTowardsMouse() {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);

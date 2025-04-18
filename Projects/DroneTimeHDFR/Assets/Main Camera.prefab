@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   targetRb: {fileID: 0}
-  maxSpeed: 100
-  minOffset: {x: 0, y: 2, z: 2.2}
-  maxOffset: {x: 0, y: 16, z: 15}
-  smoothSpeed: 0.1
+  maxSpeed: 200
+  minOffset: {x: 0, y: 2.5, z: 2.3}
+  maxOffset: {x: 0, y: 40, z: 79.2}
+  smoothSpeed: 0.05

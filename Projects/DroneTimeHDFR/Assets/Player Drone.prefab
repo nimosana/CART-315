@@ -1104,7 +1104,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 178192, guid: a4571f10673d6734494ba25f01b70792, type: 3}
   bulletShellPrefab: {fileID: 194330, guid: 0a138e478044fd94eb3af2f93e075513, type: 3}
   playerAmmo: 0
-  projectileSpeed: 30
+  projectileSpeed: 40
   fireRate: 0.05
   explosionEffect: {fileID: 7673896043974524057, guid: 6293ea0e06bd21e459e1e0b7c6c7db69, type: 3}
   suicideForce: 750
@@ -1128,6 +1128,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   uiManager: {fileID: 0}
+  exploded: 0
 --- !u!114 &5323404732592100701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,9 +1157,6 @@ MonoBehaviour:
   explosionForce: 40
   explosionRadius: 5
   rb: {fileID: 113004266995673033}
-  suicideRadius: 10
-  suicideDamage: 10
-  suicideForce: 500
 --- !u!65 &2178961928543133257
 BoxCollider:
   m_ObjectHideFlags: 0
