@@ -122,3 +122,5 @@ For my final iteration, I wasn't able to work as much after the in-person playte
 I tried to make the edges of the enemy drones glow through a shader graph but ran out of time debugging it, as I have no experience with Unity nodes, but if I continue this project, I would try adding these effects to address the visibility problem with enemies.
 
 In retrospect, I think this project was a good way for me to explore the graphical capabilities of the Unity Game engine, experimenting to achieve a high fidelity look. I also believe I was able to create a well-made core gameplay loop for my game, through the waves, home base, and drone combat mechanics. I feel like I created a strong canvas in which I can continue adding more elements or mechanics, the code is relatively well-organised and with it, I believe I've created something I can continue modifying in a scalable and adaptive manner.
+
+https://youtu.be/hWzpdq9hfik
