@@ -64,8 +64,7 @@ To reintegrate the blips while avoiding redundant code, it is now managed by a G
 
 ## Week 6 (3/6/2025)
 
-My exploration during these past weeks was mostly introspective, thinking about which type of game I want to create, combined with alot of research on game design. I started reading "Elements of Game design" by Robert Zubek, and watched videos from Game Maker's toolkit. I've also been searching for teammates, which is why I haven't defined my game idea yet, although I personally steer towards a survival type game.
-
+We don't talk about this week.
 
 ## Week 7 (3/13/2025)
 
